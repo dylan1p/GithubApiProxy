@@ -1,0 +1,36 @@
+{
+  "name": "githubapiproxy",
+  "version": "1.0.0",
+  "description": "API proxy connecting to github",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon",
+    "lint": "eslint --ignore-path .eslintignore ./",
+    "lint:fix": "eslint --ignore-path .eslintignore ./ --fix",
+    "test": "mocha --timeout 10000"
+  },
+  "keywords": [
+    "express",
+    "node"
+  ],
+  "author": "Dylan Clarke <dylan1p@hotmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3",
+    "mongoose": "^5.2.8",
+    "morgan": "^1.9.0"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^3.0.1",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-prettier": "^2.6.2",
+    "eslint-plugin-react": "^7.11.1",
+    "moch": "0.0.1",
+    "prettier": "^1.14.2"
+  }
+}
