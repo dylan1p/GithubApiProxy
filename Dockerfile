@@ -4,7 +4,7 @@ RUN mkdir /app
 WORKDIR /app
 
 COPY package.json /app
-RUN npm install && npm install -g mocha
+RUN npm install
 COPY . /app
 
 EXPOSE 3000
