@@ -2,6 +2,14 @@ const jwt = require("jsonwebtoken");
 const LocalUser = require("./localUser.model");
 const config = require("../../config");
 
+const generateToken = (id, username) => {
+  return jwt.sign(
+    { id, username },
+    config.superSecret,
+    { expiresIn: 60 }
+  );
+}
+
 const registerUser = async (req, res) => {
   const { username, password } = req.body;
 
@@ -27,16 +35,8 @@ const registerUser = async (req, res) => {
       throw err;
     }
 
-    const token = jwt.sign(
-      {
-        id: localUser._id,
-        username: localUser.username
-      },
-      config.superSecret,
-      {
-        expiresIn: 60
-      }
-    );
+    const token = generateToken(localUser._id, localUser.username)
+
     res.status(201)
     return res.json({
       success: true,
@@ -64,20 +64,11 @@ const authenticateUser = (req, res) => {
       return res.status(401).send("Authentication failed. Incorrect password");
     }
 
-    const token = jwt.sign(
-      {
-        id: user._id,
-        username: user.username
-      },
-      config.superSecret,
-      {
-        expiresIn: 60
-      }
-    );
+    const token = generateToken(user._id, user.username)
 
     return res.json({
       success: true,
-      message: "User created!",
+      message: "User authentiacted!",
       token
     });
   });

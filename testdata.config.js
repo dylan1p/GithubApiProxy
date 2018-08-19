@@ -1,4 +1,11 @@
 module.exports = {
+  testUserDetails : [{
+    username: 'testuser1',
+    password: 'password'
+  },{
+    username: 'testuser2',
+    password: 'password'
+  }],
   mockSearchResults: {
     total_count: 4,
     incomplete_results: false,
