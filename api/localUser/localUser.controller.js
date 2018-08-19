@@ -37,7 +37,7 @@ const registerUser = async (req, res) => {
         expiresIn: 60
       }
     );
-
+    res.status(201)
     return res.json({
       success: true,
       message: "User created!",

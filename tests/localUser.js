@@ -27,13 +27,13 @@ describe("Local Users", () => {
 
   describe("Registering", () => {
 
-    it("should return a status 200 if user is registered ", done => {
+    it("should return a status 201 if user is registered ", done => {
       request
         .post('/api/local-user/register')
         .set('Accept', 'application/json')
         .expect('Content-Type', /json/)
         .send(testUserDetails[1])
-        .expect(200)
+        .expect(201)
         .then(response => {
           assert.containsAllKeys(response.body,['token', 'message']);
           done();
