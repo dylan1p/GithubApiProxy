@@ -18,6 +18,7 @@ app
   );
 
 app.use("/api/local-user", require("./api/localUser"));
+app.use("/api/users", require("./api/user"));
 
 app.listen(config.PORT, () => {
   console.debug("App listening on port 3000!");

@@ -4,7 +4,7 @@ module.exports = {
   rules: {
     "prettier/prettier": ["error"],
     "no-console": ["error", { allow: ["debug", "error"] }],
-    "no-underscore-dangle": ["error", { "allow": ["_id"] }],
+    "no-underscore-dangle": ["error", { "allow": ["_id", "_update"] }],
     "prefer-destructuring": ["error", {
       "VariableDeclarator": {
         "array": true,
