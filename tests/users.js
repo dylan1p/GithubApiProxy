@@ -19,7 +19,7 @@ describe("Github Users", () => {
         .expect(200, testData.expectedSearchResult, done);
     });
 
-    it("should return 400 if the user no query parameters are sent", done => {
+    it("should return 400 if no query parameters are sent", done => {
       request
         .get('/api/users')
         .expect(400, done);
