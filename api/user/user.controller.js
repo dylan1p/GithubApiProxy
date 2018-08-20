@@ -20,7 +20,7 @@ const prepareQueryString = ({ name, location, language }) => {
 };
 
 /* eslint-disable camelcase */
-const updateUser = (userId, user) =>
+const updateUser = (userId, user) => {
   User.findByIdAndUpdate(userId, user, { new: true })
     .then(({ id, login, avatar_url, url, score }) => ({
       id,
@@ -32,6 +32,7 @@ const updateUser = (userId, user) =>
     .catch(err => {
       throw new Error(`Error updating user : ${err}`);
     });
+};
 
 const saveUser = user => {
   const newUser = new User(user);

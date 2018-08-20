@@ -1,11 +1,14 @@
 module.exports = {
-  testUserDetails : [{
-    username: 'testuser1',
-    password: 'password'
-  },{
-    username: 'testuser2',
-    password: 'password'
-  }],
+  testUserDetails: [
+    {
+      username: "testuser1",
+      password: "password"
+    },
+    {
+      username: "testuser2",
+      password: "password"
+    }
+  ],
   mockSearchResults: {
     total_count: 4,
     incomplete_results: false,
@@ -140,5 +143,10 @@ module.exports = {
       score: 6.8760076,
       url: "https://api.github.com/users/tkostus"
     }
-  ]
+  ],
+  mockPost: {
+    title: "Test title",
+    body: "Some text ....",
+    picture: "https://avatars2.githubusercontent.com/u/5624453?v=4"
+  }
 };

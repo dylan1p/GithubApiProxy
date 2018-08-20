@@ -22,7 +22,7 @@ describe("Github Users", () => {
     it("should return 400 if the user no query parameters are sent", done => {
       request
         .get('/api/users')
-        .expect(400, done);      
+        .expect(400, done);
     })
   });
 });
