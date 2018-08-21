@@ -8,6 +8,7 @@ Make sure you have [Node.js](http://nodejs.org/) and [Docker](https://www.docker
 
 ```sh
 cd FacebookGithub
+npm install
 docker-compose up
 ```
 Your app should now be running on [localhost:3000](http://localhost:3000/).
@@ -16,5 +17,6 @@ Your app should now be running on [localhost:3000](http://localhost:3000/).
 
 ```sh
 cd FacebookGithub
+npm install
 docker-compose -f docker-compose.test.yml up
 ```
