@@ -7,7 +7,7 @@ A Node/Express app showing fetching data from github and allowing posts.
 Make sure you have [Node.js](http://nodejs.org/) and [Docker](https://www.docker.com/) running.
 
 ```sh
-cd FacebookGithub
+cd GithubApiProxy
 npm install
 docker-compose up
 ```
@@ -16,7 +16,7 @@ Your app should now be running on [localhost:3000](http://localhost:3000/).
 ## Running tests
 
 ```sh
-cd FacebookGithub
+cd GithubApiProxy
 npm install
 docker-compose -f docker-compose.test.yml up
 ```
