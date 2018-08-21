@@ -5,18 +5,22 @@ const User = require("./user.model");
 
 const GITHUB_API_URL = "https://api.github.com";
 
-const prepareQueryString = ({ name, location, language, perPage, page}) => {
+const prepareQueryString = ({ name, location, language, perPage, page }) => {
   let queryString = "";
 
   if (name) {
     queryString += name;
-  }  if (location) {
+  }
+  if (location) {
     queryString += `+location:${location}`;
-  }  if (language) {
+  }
+  if (language) {
     queryString += `+language:${language}`;
-  } if (perPage) {
+  }
+  if (perPage) {
     queryString += `&per_page=${perPage}`;
-  } if (page) {
+  }
+  if (page) {
     queryString += `&page=${page}`;
   }
 
@@ -28,10 +32,13 @@ const preparePaginationLinks = (
   queryParams,
   { next, prev, first, last }
 ) => {
-
+  /* eslint-disable no-param-reassign */
   Object.keys(queryParams).forEach(
-    key => queryParams[key] === undefined || key === 'page' && delete queryParams[key]
+    key =>
+      queryParams[key] === undefined ||
+      (key === "page" && delete queryParams[key])
   );
+  /* eslint-enable no-param-reassign */
 
   const qs = querystring.stringify(queryParams);
 

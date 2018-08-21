@@ -30,6 +30,9 @@ const createPost = async (req, res) => {
 };
 
 const getPosts = async (req, res) => {
+  const perPage = +req.query.perPage || 20;
+  const page = +req.query.page || 1;
+
   let { localUserId } = req.query;
 
   if (localUserId === "me") {
@@ -42,6 +45,8 @@ const getPosts = async (req, res) => {
 
   try {
     const query = Post.find({}, "title body picture creator taggedUsers")
+      .skip(perPage * page - perPage)
+      .limit(perPage)
       .populate("creator", "username")
       .populate("taggedUsers", "id login url");
 
@@ -50,9 +55,10 @@ const getPosts = async (req, res) => {
     }
 
     const posts = await query.exec();
+
     return res.json(posts);
   } catch (err) {
-    return res.status(500).send();
+    return res.status(500).send(err);
   }
 };
 

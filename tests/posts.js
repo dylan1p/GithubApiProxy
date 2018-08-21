@@ -1,5 +1,6 @@
 const chai = require("chai");
 const assert = chai.assert;
+const faker = require('faker');
 const app = require("../app");
 const request = require("supertest")(app);
 const User = require("../api/user/user.model");
@@ -105,17 +106,58 @@ describe("Posts", () => {
 
   describe("Get posts", () => {
 
-    it("should return 200 with an array of results", done => {
+    before(done => {
+      let postPromises = [];
+
+      for(let i = 0;  i < 100; i++) {
+
+        const post = new Post({
+          title: faker.lorem.sentence(),
+          body: faker.lorem.sentences(),
+          taggedUser : [ userDoc._id ],
+          creator: localUserDoc._id
+        });
+
+        postPromises.push(post.save())
+      }
+
+      Promise.all(postPromises)
+        .then(()=> done());
+    })
+
+    it("should return 200 with an array of 20 results", done => {
       request
         .get(`/api/post/list`)
         .set('x-access-token', localUserToken)
         .expect(200)
         .then(({ body }) => {
-          assert.isArray(body);
+          assert.lengthOf(body, 20, 'Array has length of 20');
           done();
         });
     });
 
+    it("should return 200 with an array of 2 results", done => {
+      request
+        .get(`/api/post/list?perPage=2`)
+        .set('x-access-token', localUserToken)
+        .expect(200)
+        .then(({ body }) => {
+          assert.lengthOf(body, 2, 'Array has length of 2')
+          done();
+        });
+    });
+
+    it("should return 200 with an empty array when page number is too high", done => {
+      request
+        .get(`/api/post/list?page=200`)
+        .set('x-access-token', localUserToken)
+        .expect(200)
+        .then(({ body }) => {
+          console.log(body);
+          assert.lengthOf(body, 0, 'Array has length of 0')
+          done();
+        });
+    });
   });
 
   describe("Get posts by localUserId", () => {

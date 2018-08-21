@@ -281,6 +281,16 @@ paths:
       - name: "localUserId"
         in: "query"
         type: "string"
+      - name: "page"
+        in: "query"
+        description: "page number"
+        type: "integer"
+        format: "int64"
+      - name: "perPage"
+        description: "number of items per page"
+        in: "query"
+        type: "integer"
+        format: "int64"
       responses:
         200:
           description: "successful operation"
